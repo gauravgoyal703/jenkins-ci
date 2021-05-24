@@ -1,5 +1,5 @@
 def relativeJunitLogsPath = 'core-customize/hybris/log/junit'
-def projectDir = "${WORKSPACE}"
+def projectDir = "/var/jenkins_home/workspace"
 
 pipeline {
     libraries {
