@@ -1,6 +1,6 @@
 def pipelineRepo = '"https://github.com/gauravgoyal703/jenkins-ci".git'
 def projectRepo = '"https://github.com/gauravgoyal703/cloud-commerce-sample-setup".git'
-def projectTag = '${PROJECT_TAG}'
+def projectTag = '2011-spartacus-baseline'
 def sonarUrl = '"http://13.55.135.12:9000"'
 def projectRepoName = 'cloud-commerce-sample-setup"'
 def packageToTest = '"de.hybris.platform.*"'
@@ -8,7 +8,7 @@ def packageToTest = '"de.hybris.platform.*"'
 def subscriptionId = '${SUBSCRIPTION_ID}'
 def token = '${CLOUD_API_TOKEN}'
 def buildName = '${BUILD_NAME}'
-def environment = '${ENVIRONMENT_ID}'
+def environment = 'd1'
 
 // ****************************
 // *** JOB PARAMETERS
