@@ -27,7 +27,7 @@ pipeline {
             steps{
                 script{
                     // codeNumber = buildCommerceCloud("${params.PROJECT_TAG}", "${params.BUILD_NAME}")
-                    codeNumber = "31077"
+                    codeNumber = "20210525.1"
                     buildCommerceCloudCheck(codeNumber)
                 }
             }
