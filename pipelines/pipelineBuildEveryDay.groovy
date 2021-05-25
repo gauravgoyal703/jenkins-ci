@@ -16,7 +16,10 @@ pipeline {
     options {
         skipDefaultCheckout(true) // No more 'Declarative: Checkout' stage
     }
-
+    tools {
+      jdk 'jdk_1.8.0_151'
+    }
+    
     stages {
         stage('Prepare') {
             steps {
