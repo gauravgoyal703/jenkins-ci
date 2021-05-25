@@ -61,6 +61,14 @@ class JobParameters {
         }
     }
 
+    static void setSonarRepoName(job) {
+        job.with {
+            parameters {
+                stringParam('SONAR_REPO_NAME', 'Hybris', 'Sonar Repo Name')
+            }
+        }
+    }
+
     static void setPackageToTest(job, packageToTest) {
         job.with {
             parameters {
@@ -132,6 +140,7 @@ JobParameters.setProjectRepository(buildEveryDay, projectRepo)
 JobParameters.setProjectTag(buildEveryDay, projectTag)
 JobParameters.setProjectName(buildEveryDay, projectRepoName)
 JobParameters.setSonarUrl(buildEveryDay, sonarUrl)
+JobParameters.setSonarRepoName(buildEveryDay)
 JobParameters.setPackageToTest(buildEveryDay, packageToTest)
 
 def packageAndDeploy = pipelineJob('PackageAndDeploy') {
