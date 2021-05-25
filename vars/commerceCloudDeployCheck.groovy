@@ -1,7 +1,8 @@
 def call(deployCode) {
     script {
         while (true) {
-          wrap([$class: 'MaskPasswordsBuildWrapper', varPasswordPairs: [[password: "${token}", var: 'PASSWD']]]) {
+          // wrap([$class: 'MaskPasswordsBuildWrapper', varPasswordPairs: [[password: "${token}", var: 'PASSWD']]]) {
+          withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'commerceCloudCredentials', usernameVariable: 'subscriptionId', passwordVariable: 'token']]) {  
               result = sh (script: "curl --location --request GET 'https://portalrotapi.hana.ondemand.com/v2/subscriptions/${subscriptionId}/deployments/$deployCode' --header 'Authorization: Bearer ${token}'",returnStdout:true)
           }
           echo "$result"
