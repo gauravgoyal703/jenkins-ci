@@ -4,8 +4,10 @@ def call(branch, buildName) {
     script{
         withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'commerceCloudCredentials', usernameVariable: 'SUBSCRIPTIONID', passwordVariable: 'TOKEN']]) {
             portalURL = 'https://portalrotapi.hana.ondemand.com/v2/subscriptions/$SUBSCRIPTIONID/builds';
-            authorization = 'Bearer $TOKEN'
-            build = sh (script: "curl --location --request POST ${portalURL} --header 'Content-Type: application/json' --header 'Authorization: ${authorization}' --header 'Content-Type: text/plain' --data-raw '{\"branch\": \"${branch}\",\"name\": \"${buildName}\"}'",returnStdout:true)
+            authorizationValue = 'Bearer $TOKEN'
+            echo "$portalURL"
+            echo "$authorizationValue"
+            build = sh (script: "curl --location --request POST ${portalURL} --header 'Content-Type: application/json' --header 'Authorization: ${authorizationValue}' --header 'Content-Type: text/plain' --data-raw '{\"branch\": \"${branch}\",\"name\": \"${buildName}\"}'",returnStdout:true)
             echo "$build"
             build_result = readJSON text: "$build"
             code_number = build_result["code"]
